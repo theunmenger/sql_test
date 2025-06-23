@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div id="button_container">
+        <div class="container_top">
             <a href="register.php" target="_blank">Register</a>
             <a href="login.php">Login</a>
         </div>
