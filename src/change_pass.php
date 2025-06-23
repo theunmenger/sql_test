@@ -54,8 +54,8 @@
 </head>
 <body>
     <div class="container_top">
-        <a href="logged_in.php">Back</a>
         <h2>Change password</h2>
+        <a href="logged_in.php">Back</a>
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <label for="password">Password:</label><br>
             <input class="input" type="password" id="password" name="password" placeholder="Password..." required>

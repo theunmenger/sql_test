@@ -3,7 +3,7 @@
     if (!isset($_SESSION['email'])) {
         header('location: login.php');
     }
-    
+
     $conn = require_once "db_connect.php";
 
     $email_err = $password_err = "";
@@ -60,6 +60,7 @@
                                         <th>Email</th>
                                         <th>Admin status</th>
                                         <th>Delete</th>
+                                        <th>Update</th>
                                     </tr>
                                 </thead>
                             ";
@@ -74,7 +75,10 @@
                                                 <td>". $row["email"]. "</td>
                                                 <td>". $row["admin"]. "</td>
                                                 <td>
-                                                    <a href='delete_user.php?email=".$row["email"]."'>Delete</a>
+                                                    <a href='delete_user.php?email=" . urlencode($row["email"]) . "&username=" . urlencode($row["username"]) . "'>Delete</a>
+                                                </td>
+                                                <td>
+                                                    <a href='update_user.php?email=". urlencode($row["email"]) . "&username=" . urlencode($row["username"]) . "&admin" . urlencode($row["admin"]) ."'>Update</a>
                                                 </td>
                                             </tr> 
                                         </tbody>

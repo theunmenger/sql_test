@@ -20,7 +20,7 @@ body {
     display:flex;
     background-color: rgba(66, 63, 71, 0.527);
     flex-direction: column;
-    width: 30%;
+    width: 35%;
     min-width: 400px;
     align-items: center;
     border-style: hidden solid solid solid;
