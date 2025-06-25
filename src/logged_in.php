@@ -6,7 +6,7 @@
 
     $conn = require_once "db_connect.php";
 
-    $email_err = $password_err = "";
+    $email_err = $password_err = $deleted_notif = "";
 
     //fetch email and username
     $email = $_SESSION['email'];
@@ -36,7 +36,7 @@
     </head>
     <body>
         <div class="container_top">
-            <p><?php echo "Hello ". $username?></p>
+            <h2><?php echo "Hello ". $username?></h2>
             <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <input class="input" type="submit" name="Logout" value="logout">
             </form>
@@ -46,6 +46,12 @@
             <form action="delete.php">
                 <input class="input_delete" type="submit" name="delete_account" value="Delete account">
             </form>
+            <?php 
+                if (isset($_GET['deleted_user'])) {
+                    $deleted_notif = "Succesfully deleted: ". $_GET['deleted_user'];
+                }
+            ?>
+            <p><?php echo $deleted_notif?></p>
             <table class="table">
                 <?php
                     $get_admin_status = "select admin from inlog_gegevens_table where email = '$email'";
@@ -75,10 +81,18 @@
                                                 <td>". $row["email"]. "</td>
                                                 <td>". $row["admin"]. "</td>
                                                 <td>
-                                                    <a href='delete_user.php?email=" . urlencode($row["email"]) . "&username=" . urlencode($row["username"]) . "'>Delete</a>
+                                                    <form method='POST' action='delete_user.php' style='display:inline;'>
+                                                        <input type='hidden' name='email' value='". htmlspecialchars($row["email"]). "'>
+                                                        <input type='hidden' name='username' value='". htmlspecialchars($row["username"]). "'>
+                                                        <button class='input_delete_button' type='submit'>Delete</button>
+                                                    </form>
                                                 </td>
                                                 <td>
-                                                    <a href='update_user.php?email=". urlencode($row["email"]) . "&username=" . urlencode($row["username"]) . "&admin" . urlencode($row["admin"]) ."'>Update</a>
+                                                    <form method='POST' action='update_user.php' style='display:inline;'>
+                                                        <input type='hidden' name='email' value ='".  htmlspecialchars($row["email"]). "'>
+                                                        <input type='hidden' name='username' value='". htmlspecialchars($row["username"]). "'>
+                                                        <button class='input_b'type='submit'>Update</button>
+                                                    </form>
                                                 </td>
                                             </tr> 
                                         </tbody>

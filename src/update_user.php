@@ -1,5 +1,6 @@
-<?php 
+<?php
     session_start();
+
     if (!isset($_SESSION['email'])) {
         header('location: login.php');
         die();
@@ -7,9 +8,13 @@
 
     $conn = require_once "db_connect.php";
 
-    $email = $_GET["email"];
+    $username_err = $email_err = $update_notif = "";
 
+    $user = $_POST['username'];
     
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,39 +27,21 @@
 </head>
 <body>
     <div class="container_top">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Admin status</th>
-                </tr>
-            </thead>
-            <?php
-                $table_sql = "select * from inlog_gegevens_table where email = '$email'";
-                $table_output = $conn->query($table_sql);
-                if ($table_output->num_rows > 0) {
-                    while ($row = $table_output->fetch_assoc()) {
-                        echo "
-                            <tbody>
-                                <tr>
-                                    <td>". $row["username"]. "</td>
-                                    <td>". $row["email"]. "</td>
-                                    <td>". $row["admin"]. "</td>
-                                </tr> 
-                            </tbody>
-                        ";
-                    }
-                }
-            ?>
-        </table>
-        <form>
-            <label for="email">Email:</label><br>
-            <input class="input" type="text" id="email" name="email" placeholder="Example@gmail.com..." required>
+        <h2>Update user: <?php echo $user?></h2>
+        <a href="logged_in.php">Back</a>
+        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <label for="new_email">New mail:</label><br>
+            <input class="input" type="text" id="new_email" name="new_email" placeholder="Example@gmail.com..." required>
             <p class="error"><?php echo $email_err;?></p> <br>
-            <label for="username">Username:</label><br>
-            <input class="input" type="text" id="username" name="username" placeholder="Username..." required> 
+            <label for="new_username">New username:</label><br>
+            <input class="input" type="text" id="new_username" name="new_username" placeholder="Username..." required> 
             <p class="error"><?php echo $username_err;?></p><br>
+            <p>Admin status</p>
+            <input type="radio" id="yes" name="admin_status" value="1">
+            <label for="yes">Yes</label><br>
+            <input type="radio" id="no" name="admin_status" value="0">
+            <label for="no">No</label><br><br>
+            <input class="input" type="submit" name="update" value="Update">
         </form>
     </div>
 </body>
