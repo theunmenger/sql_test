@@ -6,7 +6,7 @@
 
     $conn = require_once "db_connect.php";
 
-    $email_err = $password_err = $deleted_notif = "";
+    $email_err = $password_err = $deleted_notif = $update_notif = $error = "";
 
     //fetch email and username
     $email = $_SESSION['email'];
@@ -50,8 +50,16 @@
                 if (isset($_GET['deleted_user'])) {
                     $deleted_notif = "Succesfully deleted: ". $_GET['deleted_user'];
                 }
+                if (isset($_GET['update_notif'])) {
+                    $update_notif = "Succesfully updated user: ". $_GET['update_notif'];
+                }
+                if (isset($_GET['error'])) {
+                    $error = $_GET['error'];
+                }
             ?>
             <p><?php echo $deleted_notif?></p>
+            <p><?php echo $update_notif?></p>
+            <p class="error"><?php echo $error?></p>
             <table class="table">
                 <?php
                     $get_admin_status = "select admin from inlog_gegevens_table where email = '$email'";

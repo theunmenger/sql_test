@@ -31,16 +31,16 @@
         <div id="form_container">
             <form method="POST" action="change_name.php" style="display:inline;">
                 <input type="hidden" name="email" value="<?php echo htmlspecialchars($email);?>">
-                <input class="input" type="text" id="username" name="username" placeholder="New username..." minlength="3"> 
+                <input class="input" type="text" id="new_username" name="new_username" placeholder="New username..." minlength="3"> 
                 <button class="input_b" type="submit">Update username</button>
             </form>
 
             <form method="POST" action="change_email.php" style="display:inline;">
                 <input type="hidden" name="email" value="<?php echo htmlspecialchars($email);?>">
-                <input class="input" type="text" id="email" name="email" placeholder="Example@gmail.com...">
+                <input class="input" type="text" id="new_email" name="new_email" placeholder="Example@gmail.com...">
                 <button class="input_b" type="submit">Update email</button>
             </form><br><br>
-            
+
             <form method="POST" action="change_admin.php" style="display:inline;">
                 <p>Has admin:</p>
                 <input type="hidden" name="email" value="<?php echo htmlspecialchars($email);?>">
