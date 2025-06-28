@@ -66,10 +66,10 @@
         <a href="logged_in.php">Back</a>
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.');">
             <label for="password">Password:</label><br>
-            <input class="input" type="password" id="password" name="password" placeholder="Password..." require>
+            <input class="input" type="password" id="password" name="password" placeholder="Password..." required>
             <p class="error"><?php echo $password_err;?></p> <br>
             <label for="password">Verify password:</label><br>
-            <input class="input" type="password" id="verify_password" name="verify_password" placeholder="Verify password..." require>
+            <input class="input" type="password" id="verify_password" name="verify_password" placeholder="Verify password..." required>
             <p class="error"><?php echo $password_verify_err;?></p> <br>
             <input class="input_delete" type="submit" name="delete" value="Delete">
         </form>

@@ -58,10 +58,10 @@
             <h2>Login</h2>
             <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <label for="email">Email:</label><br>
-                <input class="input" type="text" id="email" name="email" placeholder="Example@gmail.com..." require>
+                <input class="input" type="text" id="email" name="email" placeholder="Example@gmail.com..." required>
                 <p class="error"><?php echo $email_err;?></p> <br>
                 <label for="password">Password:</label><br>
-                <input class="input" type="password" id="password" name="password" placeholder="Password..." require>
+                <input class="input" type="password" id="password" name="password" placeholder="Password..." required>
                 <p class="error"><?php echo $password_err;?></p> <br>
                 <input class="input" type="submit" name="login" value="Login">
             </form>
