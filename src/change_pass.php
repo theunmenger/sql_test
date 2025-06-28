@@ -64,7 +64,7 @@
             <input class="input" type="password" id="verify_password" name="verify_password" placeholder="Verify password..." required>
             <p class="error"><?php echo $password_verify_err;?></p> <br>
             <label for="new_pass">New password:</label><br>
-            <input class="input" type="password" id="new_pass" name="new_pass" placeholder="New password..." required><br>
+            <input class="input" type="password" id="new_pass" name="new_pass" placeholder="New password..." required required minlength="6"><br>
             <input class="input" type="submit" name="change_pass" value="Change password">
         </form>
         <h3><?php echo $update_notif?></h3>

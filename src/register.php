@@ -63,10 +63,10 @@
         <input class="input" type="text" id="email" name="email" placeholder="Example@gmail.com..." required>
         <p class="error"><?php echo $email_err;?></p> <br>
         <label for="username">Username:</label><br>
-        <input class="input" type="text" id="username" name="username" placeholder="Username..." required> 
+        <input class="input" type="text" id="username" name="username" placeholder="Username..." required minlength="3"> 
         <p class="error"><?php echo $username_err;?></p><br>
         <label for="password">Password:</label><br>
-        <input class="input" type="password" id="password" name="password" placeholder="Password..." required> <br> 
+        <input class="input" type="password" id="password" name="password" placeholder="Password..." required minlength="6"> <br> 
         <label for="password">Verify password:</label><br>
         <input class="input" type="password" id="verify_password" name="verify_password" placeholder="Verify password..." required>
         <p class="error"><?php echo $password_verify_err;?></p> <br>
